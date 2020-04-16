@@ -61,12 +61,14 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
-  height: 50px;
+  height: 70px;
   overflow: hidden;
-  position: relative;
-  background: #fff;
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  /*background: #fff;*/
   box-shadow: 0 1px 4px rgba(0,21,41,.08);
-
+  background-color: #304156;
   .hamburger-container {
     line-height: 46px;
     height: 100%;
