@@ -77,7 +77,7 @@ export default {
 }
 </style>
 <style>
-  .el-breadcrumb__inner a, .el-breadcrumb__inner.is-link{
-    color:#fff;
-  }
+  /*.el-breadcrumb__inner a, .el-breadcrumb__inner.is-link{*/
+  /*  color:#fff;*/
+  /*}*/
 </style>

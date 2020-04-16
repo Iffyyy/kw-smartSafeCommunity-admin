@@ -48,7 +48,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/home',
     children: [{
-      path: 'home',
+      path: '/home1',
       name: 'home',
       component: () => import('@/views/dashboard/index'),
       meta: { title: '首页', icon: 'dashboard' }
@@ -75,7 +75,7 @@ export const constantRoutes = [
         meta: { title: '公共事件', icon: 'tree' }
       },
       {
-        path: 'tree',
+        path: 'tree1',
         name: 'Tree',
         component: () => import('@/views/tree/index'),
         meta: { title: '设备事件', icon: 'tree' }
@@ -118,13 +118,13 @@ export const constantRoutes = [
         meta: { title: '事件动态' }
       },
       {
-        path: 'menu1',
+        path: 'menu4',
         component: () => import('@/views/nested/menu2/index'), // Parent router-view
         name: 'Menu1',
         meta: { title: '车辆动态' },
       },
       {
-        path: 'menu1',
+        path: 'menu3',
         component: () => import('@/views/nested/menu2/index'), // Parent router-view
         name: 'Menu1',
         meta: { title: '决策贴士'},
@@ -160,13 +160,13 @@ export const constantRoutes = [
         meta: { title: '居民事件', icon: 'table' }
       },
       {
-        path: 'tree',
+        path: 'tree2',
         name: 'Tree',
         component: () => import('@/views/tree/index'),
         meta: { title: '公共事件', icon: 'tree' }
       },
       {
-        path: 'tree',
+        path: 'tree3',
         name: 'Tree',
         component: () => import('@/views/tree/index'),
         meta: { title: '设备事件', icon: 'tree' }

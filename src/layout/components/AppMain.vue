@@ -1,6 +1,5 @@
 <template>
   <section class="app-main">
-    <div class="nav"></div>
     <transition name="fade-transform" mode="out-in">
       <router-view :key="key" />
     </transition>
@@ -19,7 +18,6 @@ export default {
 </script>
 
 <style scoped>
-
 .app-main {
   /*50 = navbar  */
   min-height: calc(100vh - 50px);
@@ -31,13 +29,7 @@ export default {
   padding-top: 50px;
 }
 </style>
-<style>
-  .nav{
-    width: 100%;
-    height: 70px;
-    overflow: hidden;
-  }
-</style>
+
 <style lang="scss">
 // fix css style bug in open el-dialog
 .el-popup-parent--hidden {

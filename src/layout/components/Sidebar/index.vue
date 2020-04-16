@@ -1,7 +1,6 @@
 <template>
   <div :class="{'has-logo':showLogo}">
     <logo v-if="showLogo" :collapse="isCollapse" />
-    <div class="nav"></div>
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
         :default-active="activeMenu"
@@ -55,10 +54,3 @@ export default {
   }
 }
 </script>
-<style>
-  .nav{
-    width: 100%;
-    height: 70px;
-    background-color: #304156;
-  }
-</style>
