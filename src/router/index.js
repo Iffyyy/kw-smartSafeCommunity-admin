@@ -46,6 +46,7 @@ export const constantRouterMap = [
   {
     path: '/',
     component: Layout,
+<<<<<<< HEAD
     redirect: '/index/index',
     hidden: true,
     children: [{
@@ -63,6 +64,13 @@ export const constantRouterMap = [
       path: 'home',
       name: 'home',
       component: () => import('@/views/home/admin'),
+=======
+    redirect: '/home',
+    children: [{
+      path: '/home1',
+      name: 'home',
+      component: () => import('@/views/dashboard/index'),
+>>>>>>> d92e4c8fce60f18e897f1314a0991d980ef1db60
       meta: { title: '首页', icon: 'dashboard' }
     }]
   },
@@ -70,6 +78,7 @@ export const constantRouterMap = [
   {
     path: '/incident',
     component: Layout,
+<<<<<<< HEAD
     redirect: '/incident/person',
     name: 'incident',
     meta: { title: '事件中心', icon: 'incident' },
@@ -91,6 +100,29 @@ export const constantRouterMap = [
         name: 'Device',
         component: () => import('@/views/incident/device'),
         meta: { title: '设备事件',icon:'device' }
+=======
+    redirect: '/incident/table',
+    name: 'incident',
+    meta: { title: '事件中心', icon: 'example' },
+    children: [
+      {
+        path: 'table',
+        name: 'Table',
+        component: () => import('@/views/table/index'),
+        meta: { title: '居民事件', icon: 'table' }
+      },
+      {
+        path: 'tree',
+        name: 'Tree',
+        component: () => import('@/views/tree/index'),
+        meta: { title: '公共事件', icon: 'tree' }
+      },
+      {
+        path: 'tree1',
+        name: 'Tree',
+        component: () => import('@/views/tree/index'),
+        meta: { title: '设备事件', icon: 'tree' }
+>>>>>>> d92e4c8fce60f18e897f1314a0991d980ef1db60
       }
     ]
   },
@@ -106,6 +138,7 @@ export const constantRouterMap = [
     },
     children: [
       {
+<<<<<<< HEAD
         path: 'report/person',
         component: () => import('@/views/report/index'), // Parent router-view
         name: 'Person',
@@ -115,6 +148,12 @@ export const constantRouterMap = [
         path: 'report/incident',
         component: () => import('@/views/report/person'),
         meta: { title: '事件基本信息',icon:'eventinfo' }
+=======
+        path: 'index',
+        name: 'report',
+        component: () => import('@/views/form/index'),
+        meta: { title: '报表中心', icon: 'form' }
+>>>>>>> d92e4c8fce60f18e897f1314a0991d980ef1db60
       }
     ]
   },
@@ -122,6 +161,7 @@ export const constantRouterMap = [
   {
     path: '/analyze',
     component: Layout,
+<<<<<<< HEAD
     redirect: '/person',
     name: 'Analyze',
     meta: {
@@ -153,6 +193,37 @@ export const constantRouterMap = [
         name: 'Note',
         meta: { title: '决策贴士',icon:'note' },
       },
+=======
+    redirect: '/nested/menu1',
+    name: 'Analyze',
+    meta: {
+      title: '分析中心',
+      icon: 'nested'
+    },
+    children: [
+      {
+        path: 'menu1',
+        component: () => import('@/views/nested/menu2/index'), // Parent router-view
+        name: 'Menu1',
+        meta: { title: '人员动态' },
+      },
+      {
+        path: 'menu2',
+        component: () => import('@/views/nested/menu2/index'),
+        meta: { title: '事件动态' }
+      },
+      {
+        path: 'menu4',
+        component: () => import('@/views/nested/menu2/index'), // Parent router-view
+        name: 'Menu1',
+        meta: { title: '车辆动态' },
+      },
+      {
+        path: 'menu3',
+        component: () => import('@/views/nested/menu2/index'), // Parent router-view
+        name: 'Menu1',
+        meta: { title: '决策贴士'},
+      },
     ]
   },
 
@@ -163,8 +234,49 @@ export const constantRouterMap = [
       {
         path: 'index',
         name: 'Archives',
+        component: () => import('@/views/form/index'),
+        meta: { title: '档案中心', icon: 'form' }
+      }
+>>>>>>> d92e4c8fce60f18e897f1314a0991d980ef1db60
+    ]
+  },
+
+
+  {
+<<<<<<< HEAD
+    path: '/archives',
+=======
+    path: '/external-link',
+>>>>>>> d92e4c8fce60f18e897f1314a0991d980ef1db60
+    component: Layout,
+    redirect: '/example/table',
+    name: 'external-link',
+    meta: { title: '系统管理', icon: 'example' },
+    children: [
+      {
+<<<<<<< HEAD
+        path: 'index',
+        name: 'Archives',
         component: () => import('@/views/archives/index'),
         meta: { title: '档案中心', icon: 'archive' }
+=======
+        path: 'table',
+        name: 'Table',
+        component: () => import('@/views/table/index'),
+        meta: { title: '居民事件', icon: 'table' }
+      },
+      {
+        path: 'tree2',
+        name: 'Tree',
+        component: () => import('@/views/tree/index'),
+        meta: { title: '公共事件', icon: 'tree' }
+      },
+      {
+        path: 'tree3',
+        name: 'Tree',
+        component: () => import('@/views/tree/index'),
+        meta: { title: '设备事件', icon: 'tree' }
+>>>>>>> d92e4c8fce60f18e897f1314a0991d980ef1db60
       }
     ]
   },*/
