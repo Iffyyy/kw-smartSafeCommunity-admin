@@ -11,6 +11,7 @@ NProgress.configure({ showSpinner: false }) // NProgress Configuration
 const whiteList = ['/login'] // no redirect whitelist
 
 router.beforeEach(async(to, from, next) => {
+  // console.log(to)
   // start progress bar
   NProgress.start()
 
@@ -26,6 +27,17 @@ router.beforeEach(async(to, from, next) => {
       next({ path: '/' })
       NProgress.done()
     } else {
+      if (store.getters.addRouters.length === 0) { // 判断当前用户是否已拉取完user_info信息
+        store.dispatch('GenerateRoutes').then(() => { // 根据roles权限生成可访问的路由表
+          router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表
+          next({ ...to, replace: true }) // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
+        }).catch(error=>{
+          console.log(error)
+        })
+      } else {
+        next()
+      }
+    
       const hasGetUserInfo = store.getters.name
       if (hasGetUserInfo) {
         next()

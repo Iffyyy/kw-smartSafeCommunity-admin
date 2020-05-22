@@ -105,3 +105,103 @@ export function param2Obj(url) {
       '"}'
   )
 }
+
+// /**
+//  * @param {Function} func
+//  * @param {number} wait
+//  * @param {boolean} immediate
+//  * @return {*}
+//  */
+// export function debounce(func, wait, immediate) {
+//   let timeout, args, context, timestamp, result
+
+//   const later = function() {
+//     // 据上一次触发时间间隔
+//     const last = +new Date() - timestamp
+
+//     // 上次被包装函数被调用时间间隔 last 小于设定时间间隔 wait
+//     if (last < wait && last > 0) {
+//       timeout = setTimeout(later, wait - last)
+//     } else {
+//       timeout = null
+//       // 如果设定为immediate===true，因为开始边界已经调用过了此处无需调用
+//       if (!immediate) {
+//         result = func.apply(context, args)
+//         if (!timeout) context = args = null
+//       }
+//     }
+//   }
+
+//   return function(...args) {
+//     context = this
+//     timestamp = +new Date()
+//     const callNow = immediate && !timeout
+//     // 如果延时不存在，重新设定延时
+//     if (!timeout) timeout = setTimeout(later, wait)
+//     if (callNow) {
+//       result = func.apply(context, args)
+//       context = args = null
+//     }
+
+//     return result
+//   }
+// }
+
+export function debounce(event,t) {
+  let timer = null;
+  let time=t||500
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      event.apply(this, args);
+    }, time);
+  };
+}
+
+
+/**
+ * 取数组对象的一个属性，返回数组
+ * @param {*} array 
+ * @param {*} preporty 
+ */
+export function formatArray(array,preporty){
+  if( !Array.isArray(array))return []
+  let des=array.map(item=>item[preporty])
+  return des
+}
+
+/**
+ * 取数组对象的部分属性，重新命名属性，返回一个新数组
+ * @param {*} array 
+ * @param {*} oldPreporty 
+ * @param {*} newPreporty 
+ */
+export function changeArray(array,oldPreporty,newPreporty=oldPreporty){
+  if( !Array.isArray(array))return []
+  let des=array.map(item=>{
+    // for(let k in item)
+    if(Array.isArray(oldPreporty)&&Array.isArray(newPreporty)&&oldPreporty.length===newPreporty.length){
+      let temp={}
+      for(let i=0;i<oldPreporty.length;i++){
+        if(Object.keys(item).indexOf(oldPreporty[i])!==-1){
+          temp[newPreporty[i]]=item[oldPreporty[i]]
+        }
+      }
+      return temp
+    }else if(Object.keys(item).indexOf(oldPreporty)!==-1){
+      return {[newPreporty]:item[oldPreporty]}
+    }
+  })
+  return des
+}
+
+/**
+ * 控制字符长度显示，超过显示...
+ * @param {*} str 
+ * @param {*} num 
+ */
+export function formatStr(str,num){
+  if(!str)return
+  if(str.length<=6)return str
+  return str.substring(0,num)+'...'
+}

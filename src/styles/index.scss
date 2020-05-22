@@ -3,6 +3,15 @@
 @import './transition.scss';
 @import './element-ui.scss';
 @import './sidebar.scss';
+@import './base.scss';
+// @import './tabel.scss';
+@import './el-dialog.scss';
+
+
+@font-face {
+  font-family: Dinpro;
+  src: url('../assets/font/DINPRO-BOLD.OTF');
+ }
 
 body {
   height: 100%;

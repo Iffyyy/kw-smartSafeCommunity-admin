@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 Vue.use(Router)
+export const _import = require('./_import_' + process.env.NODE_ENV)
 
 /* Layout */
 import Layout from '@/layout'
@@ -26,11 +27,11 @@ import Layout from '@/layout'
  */
 
 /**
- * constantRoutes
+ * constantRouterMap
  * a base page that does not have permission requirements
  * all roles can be accessed
  */
-export const constantRoutes = [
+export const constantRouterMap = [
   {
     path: '/login',
     component: () => import('@/views/login/index'),
@@ -42,131 +43,192 @@ export const constantRoutes = [
     component: () => import('@/views/404'),
     hidden: true
   },
-
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
+    redirect: '/index/index',
+    hidden: true,
     children: [{
-      path: 'dashboard',
-      name: 'Dashboard',
-      component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      path: 'home',
+      name: 'home',
+      component: () => import('@/views/home/admin'),
+      meta: { title: '首页', icon: 'dashboard' }
+    }]
+  },
+/*  {
+    path: '/',
+    component: Layout,
+    redirect: '/index',
+    children: [{
+      path: 'home',
+      name: 'home',
+      component: () => import('@/views/home/admin'),
+      meta: { title: '首页', icon: 'dashboard' }
     }]
   },
 
   {
-    path: '/example',
+    path: '/incident',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'example' },
+    redirect: '/incident/person',
+    name: 'incident',
+    meta: { title: '事件中心', icon: 'incident' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        path: 'person',
+        name: 'Person',
+        component: () => import('@/views/incident/person'),
+        meta: { title: '人员事件',icon:'person'  }
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        path: 'public',
+        name: 'Public',
+        component: () => import('@/views/incident/public'),
+        meta: { title: '公共事件',icon:'public'  }
+      },
+      {
+        path: 'device',
+        name: 'Device',
+        component: () => import('@/views/incident/device'),
+        meta: { title: '设备事件',icon:'device' }
       }
     ]
   },
 
   {
-    path: '/form',
+    path: '/report',
+    component: Layout,
+    redirect: '/person',
+    name: 'report',
+    meta: {
+      title: '报表中心',
+      icon: 'report'
+    },
+    children: [
+      {
+        path: 'report/person',
+        component: () => import('@/views/report/index'), // Parent router-view
+        name: 'Person',
+        meta: { title: '人员基本信息',icon:'userinfo' },
+      },
+      {
+        path: 'report/incident',
+        component: () => import('@/views/report/person'),
+        meta: { title: '事件基本信息',icon:'eventinfo' }
+      }
+    ]
+  },
+
+  {
+    path: '/analyze',
+    component: Layout,
+    redirect: '/person',
+    name: 'Analyze',
+    meta: {
+      title: '分析中心',
+      icon: 'analyze'
+    },
+    children: [
+      {
+        path: 'person',
+        component: () => import('@/views/analyze/person/index'), // Parent router-view
+        name: 'Person',
+        meta: { title: '人员动态' ,icon:'people' },
+      },
+      {
+        path: 'incident',
+        component: () => import('@/views/analyze/incident/index'),
+        meta: { title: '事件动态',icon:'event'  }
+      },
+      {
+        path: 'car',
+        component: () => import('@/views/analyze/car/index'), // Parent router-view
+        name: 'Car',
+        meta: { title: '车辆动态' ,
+        icon: 'car'},
+      },
+      {
+        path: 'note',
+        component: () => import('@/views/analyze/note/index'), // Parent router-view
+        name: 'Note',
+        meta: { title: '决策贴士',icon:'note' },
+      },
+    ]
+  },
+
+  {
+    path: '/archives',
     component: Layout,
     children: [
       {
         path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        name: 'Archives',
+        component: () => import('@/views/archives/index'),
+        meta: { title: '档案中心', icon: 'archive' }
       }
     ]
-  },
+  },*/
 
-  {
-    path: '/nested',
+/*  {
+    path: '/system',
     component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
-    meta: {
-      title: 'Nested',
-      icon: 'nested'
-    },
+    redirect: '/system/roleconfig',
+    name: 'system',
+    meta: { title: '系统管理', icon: 'system' },
     children: [
       {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
+        path: 'roleconfig',
+        name: 'RoleConfig',
+        component: () => import('@/views/system/TheRoleConfiguration/index'),
+        meta: { title: '角色配置',icon:'role'  }
       },
       {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        meta: { title: 'menu2' }
-      }
-    ]
-  },
-
-  {
-    path: 'external-link',
-    component: Layout,
-    children: [
+        path: 'accountmanagement',
+        name: 'AccountManagement',
+        component: () => import('@/views/system/AccountManagement/index'),
+        meta: { title: '账号管理' ,icon:'account' }
+      },
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
-      }
+        path: 'authorityManagement',
+        name: 'Tree',
+        component: () => import('@/views/system/AuthorityManagement/index'),
+        meta: { title: '权限管理' ,icon:'permission' }
+      },
+      // {
+      //   path: 'tree4',
+      //   name: 'Tree',
+      //   component: () => import('@/views/tree/index'),
+      //   meta: { title: '人员管理' }
+      // },
+      {
+        path: 'accessrecord',
+        name: 'InAndOutManagement',
+        component: () => import('@/views/system/InAndOutManagement/index'),
+        meta: { title: '出入记录',icon:'access'  }
+      },
+      {
+        path: 'operation',
+        name: 'OperationGuidance',
+        component: () => import('@/views/system/OperationGuidance/index'),
+        meta: { title: '操作日志',icon:'log'  }
+      },
+      {
+        path: 'tree7',
+        name: 'Tree',
+        component: () => import('@/views/system/RoleConfiguration/index'),
+        meta: { title: '规则配置',icon:'rule'  }
+      },
     ]
-  },
+  },*/
 
   // 404 page must be placed at the end !!!
-  { path: '*', redirect: '/404', hidden: true }
+  // { path: '*', redirect: '/404', hidden: true }
 ]
 
 const createRouter = () => new Router({
   // mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
-  routes: constantRoutes
+  routes: constantRouterMap
 })
 
 const router = createRouter()

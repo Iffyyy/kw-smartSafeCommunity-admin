@@ -1,0 +1,40 @@
+
+$imgUrl:'../assets/';
+.event-container{
+  &>.el-dialog{
+    width: 1000px;
+    height: 610px;
+    background: center / contain url($imgUrl+'common/event-bg.png') no-repeat !important;
+
+    .el-dialog__header{   
+      padding:0;
+      .el-dialog__title{   
+        color: #ffffff;
+        font-size: 30px;
+        margin-left: 110px;
+        font-weight: 400;
+
+        &::before{
+          content: '';
+          background: center / contain url($imgUrl+'common/warn.png') no-repeat !important;
+          width: 54px;
+          height: 50px;
+          display: inline-block;
+          vertical-align: middle;
+          position: absolute;
+          top: -16px;
+          left: 44px;
+        }
+      }
+    }
+
+    .el-dialog__body{
+      padding: 54px 63px 46px 63px;
+    }
+
+
+    .el-dialog__header .el-dialog__headerbtn{
+      display: none;
+    }
+  }
+}

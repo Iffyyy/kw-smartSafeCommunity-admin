@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="148" height="22" viewBox="0 0 148 22">
+  <defs>
+    <style>
+      .cls-1 {
+        opacity: 0.66;
+      }
+
+      .cls-2 {
+        fill: url(#radial-gradient);
+      }
+
+      .cls-3 {
+        fill: url(#radial-gradient-2);
+      }
+    </style>
+    <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#04e5ff"/>
+      <stop offset="1" stop-color="#04e5ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="radial-gradient-2" gradientTransform="matrix(1, 0, 0, -1, 0, 1)" xlink:href="#radial-gradient"/>
+  </defs>
+  <g id="组_69" data-name="组 69" class="cls-1" transform="translate(-50 -743.628)">
+    <rect id="矩形_66" data-name="矩形 66" class="cls-2" width="148" height="4" transform="translate(50 743.628)"/>
+    <rect id="矩形_67" data-name="矩形 67" class="cls-3" width="82" height="4" transform="translate(83 753.628)"/>
+    <rect id="矩形_68" data-name="矩形 68" class="cls-3" width="34" height="3" transform="translate(107 762.628)"/>
+  </g>
+</svg>
